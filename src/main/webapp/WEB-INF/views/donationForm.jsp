@@ -7,25 +7,25 @@
 
 
 <form:form method="POST" action="/donations/new" modelAttribute="donation">
-    <div>
-        <div>
-            <h3>Zaznacz co chcesz oddać:</h3>
+    <section class="help">
+        <div class="help--slides-items">
+            <h2>Zaznacz co chcesz oddać:</h2>
             <c:forEach items="${categories}" var="category">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="checkbox" name="categories" value="${category.id}"/>
+                        <form:checkbox path="categories" value="${category.id}"/>
                         <span class="checkbox"></span>
                         <span class="description">${category.name}</span>
                     </label>
                 </div>
             </c:forEach>
         </div>
-        <div>
-            <h3>Wybierz organizacje, której chcesz pomóc:</h3>
+        <div class="help--slides-items">
+            <h2>Wybierz organizacje, której chcesz pomóc:</h2>
             <c:forEach items="${institutions}" var="institution">
                 <div class="form-group form-group--checkbox">
                     <label>
-                        <input type="radio" name="institution" value="${institution.id}"/>
+                        <form:radiobutton path="institution" value="${institution.id}"/>
                         <span class="checkbox radio"></span>
                         <span class="description">
                     <div class="title">${institution.name}</div>
@@ -35,48 +35,42 @@
                 </div>
             </c:forEach>
         </div>
-        <div class="form-section--column">
-            <h4>Adres odbioru:</h4>
-            <div>
-                Kod pocztowy:
-                <form:input path="zipCode"/>
-            </div>
-
-            <div>
-                Ulica:
-                <form:input path="street"/>
-            </div>
-
-            <div>
-                Miasto:
-                <form:input path="city"/>
+        <div class="help--slides-items">
+            <div class="form-group">
+                <h2>Ilość worków:</h2>
+                <form:input type="number" path="quantity" placeholder="Ilość worków"/>
             </div>
         </div>
-
-        <div class="form-section--column">
-            <h4>Termin odbioru:</h4>
-            <div>
-                Ilość:
-                <form:input path="quantity"/>
+        <div class="help--slides-items">
+            <div class="form-group">
+                <h2>Adres odbioru:</h2>
             </div>
-
-            <div>
-                Komentarz:
-                <form:textarea path="pickUpComment"/>
+            <div class="form-group">
+                <form:input type="text" path="zipCode" placeholder="Kod pocztowy"/>
             </div>
-
-            <div>
-                Data odbioru:
-                <form:input type="date" path="pickUpDate"/>
+            <div class="form-group">
+                <form:input type="text" path="street" placeholder="Ulica"/>
             </div>
-
-            <div>
-                Godzina odbioru:
-                <form:input type="time" path="pickUpTime"/>
+            <div class="form-group">
+                <form:input type="text" path="city" placeholder="Miasto"/>
             </div>
         </div>
-        <input type="submit" value="Submit"/>
-    </div>
+        <div class="help--slides-items">
+            <div class="form-group">
+                <h2>Termin odbioru:</h2>
+            </div>
+            <div class="form-group">
+                <form:textarea path="pickUpComment" placeholder="Komentarz"/>
+            </div>
+            <div class="form-group">
+                <form:input type="date" path="pickUpDate" placeholder="Data odbioru"/>
+            </div>
+            <div class="form-group">
+                <form:input type="time" path="pickUpTime" placeholder="Godzina odbioru"/>
+            </div>
+        </div>
+        <button class="btn" type="submit" style="margin-top: 20px;">Wyślij</button>
+    </section>
 </form:form>
 
 <%@ include file="footer.jsp" %>
