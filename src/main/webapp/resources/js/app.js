@@ -150,8 +150,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateForm() {
       this.$step.innerText = this.currentStep;
 
-      // TODO: Validation
-
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
@@ -163,7 +161,28 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
-      // TODO: get data from inputs and show them in summary
+      if (this.currentStep === 5) {
+        const categories = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(input => input.dataset.name);
+        const quantity = document.querySelector('input[name="quantity"]').value;
+        const institution = document.querySelector('input[name="institution"]:checked').dataset.name;
+        const street = document.querySelector('input[name="street"]').value;
+        const city = document.querySelector('input[name="city"]').value;
+        const zipCode = document.querySelector('input[name="zipCode"]').value;
+        const pickUpDate = document.querySelector('input[name="pickUpDate"]').value;
+        const pickUpTime = document.querySelector('input[name="pickUpTime"]').value;
+        const pickUpComment = document.querySelector('textarea[name="pickUpComment"]').value;
+
+        document.querySelector('#summary-quantity').innerText = `${quantity} worków: ${categories.join(', ')}`;
+        document.querySelector('#summary-institution').innerText = institution;
+
+        document.querySelector('#summary-street').innerText = street;
+        document.querySelector('#summary-city').innerText = city;
+        document.querySelector('#summary-zipCode').innerText = zipCode;
+
+        document.querySelector('#summary-pickUpDate').innerText = pickUpDate;
+        document.querySelector('#summary-pickUpTime').innerText = pickUpTime;
+        document.querySelector('#summary-pickUpComment').innerText = pickUpComment;
+      }
     }
 
   }
