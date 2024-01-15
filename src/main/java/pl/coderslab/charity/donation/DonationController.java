@@ -17,7 +17,7 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/donations")
-public class DonationController {
+class DonationController {
 
     private final DonationRepository donationRepository;
     private final CategoryRepository categoryRepository;

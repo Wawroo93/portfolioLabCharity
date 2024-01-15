@@ -112,6 +112,7 @@
             <c:if test="${not empty institutions and institutions.size() % 2 != 0}">
                 </li>
             </c:if>
+            //pageable
         </ul>
     </div>
 </section>

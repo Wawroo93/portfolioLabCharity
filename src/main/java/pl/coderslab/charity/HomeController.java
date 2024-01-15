@@ -23,4 +23,6 @@ public class HomeController {
         model.addAttribute("donationCount", donationRepository.count());
         return "index";
     }
+
+    //application.yaml
 }

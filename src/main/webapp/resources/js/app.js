@@ -125,6 +125,44 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$next.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
+
+          if (this.currentStep === 1) {
+            const categories = document.querySelectorAll('input[name="categories"]:checked');
+            if (categories.length === 0) {
+              alert("Proszę wybrać przynajmniej jedną kategorię.");
+              return;
+            }
+          }
+
+          if (this.currentStep === 2) {
+            const quantity = document.querySelector('input[name="quantity"]').value;
+            if (!quantity || quantity <= 0) {
+              alert("Proszę podać poprawną liczbę worków");
+              return;
+            }
+          }
+
+          if (this.currentStep === 3) {
+            const institution = document.querySelector('input[name="institution"]:checked');
+            if (!institution) {
+              alert("Proszę wybrać instytucję, której chcesz pomóc.");
+              return;
+            }
+          }
+
+          if (this.currentStep === 4) {
+            const street = document.querySelector('input[name="street"]').value;
+            const city = document.querySelector('input[name="city"]').value;
+            const zipCode = document.querySelector('input[name="zipCode"]').value;
+            const pickUpDate = document.querySelector('input[name="pickUpDate"]').value;
+            const pickUpTime = document.querySelector('input[name="pickUpTime"]').value;
+
+            if (!street || !city || !zipCode || !pickUpDate || !pickUpTime) {
+              alert("Proszę wypełnić wszystkie pola adresowe i termin odbioru.");
+              return;
+            }
+          }
+
           this.currentStep++;
           this.updateForm();
         });
