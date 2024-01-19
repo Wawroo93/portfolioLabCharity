@@ -16,8 +16,8 @@
 <header>
     <nav class="container container--70">
         <ul class="nav--actions">
-            <li><a href="#">Zaloguj</a></li>
-            <li class="highlighted"><a href="#">Załóż konto</a></li>
+            <li><a href="<c:url value="/login"/>">Zaloguj</a></li>
+            <li class="highlighted"><a href="<c:url value="/register"/>">Załóż konto</a></li>
         </ul>
 
         <ul>
@@ -32,6 +32,7 @@
 </header>
 
 <section class="login-page">
+    <h2>Załóż konto</h2>
     <form:form action="/register" method="POST" modelAttribute="user">
         <div class="form-group">
             <input type="text" name="name" placeholder="Imię"/>
